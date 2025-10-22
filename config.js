@@ -1,60 +1,60 @@
-const passport = require("passport")
-require('dotenv').config() // Load environment variables from .env file
+const passport = require("passport");
+require("dotenv").config(); // Load environment variables from .env file
 
-const GoogleStrategy = require("passport-google-oauth20").Strategy
-const Channel = require("@models/Channel") // Import the Channel model
-const { createUniqueHandle } = require("@lib/utils")
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const Channel = require("@models/Channel"); // Import the Channel model
+const { createUniqueHandle } = require("@lib/utils");
 
 // Configure the Google strategy for use by Passport
+console.log("✅ Google OAuth Callback URL =>",
+  `${process.env.HOST_URL || "http://localhost:3000"}/api/auth/google/callback`
+);
+
 passport.use(
-    new GoogleStrategy(
-        {
-            clientID: process.env.GOOGLE_CLIENT_ID, // Google client ID from environment variable
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Google client secret from environment variable
-            callbackURL: "/api/auth/google/callback", // Callback URL after Google authentication
-        },
-        async (accessToken, refreshToken, profile, cb) => {
-            try {
-                // Find a channel by email
-                let channel = await Channel.findOne({ email: profile.emails[0].value })
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID, // Google client ID
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET, // Google client secret
+      callbackURL: `${process.env.HOST_URL || "http://localhost:3000"}/api/auth/google/callback`, // Flexible callback URL
+    },
+    async (accessToken, refreshToken, profile, cb) => {
+      try {
+        // Find a channel by email
+        let channel = await Channel.findOne({ email: profile.emails[0].value });
 
-                // If no channel is found, create a new one
-                if (!channel) {
-
-                    // Find handles with the same base name as the email username and if found make it unique
-                    const handle = await createUniqueHandle(profile.emails[0].value.split('@')[0])
-                    channel = await Channel.create({
-                        name: profile.displayName, // Google profile display name
-                        handle: handle,
-                        email: profile.emails[0].value, // Google profile email
-                        logoURL: profile.photos[0].value.split('=')[0], // Google profile photo URL
-                    })
-                }
-
-                // Return the channel through the callback
-                cb(null, channel)
-            } catch (err) {
-                // Handle errors
-                cb(err)
-            }
+        // If no channel is found, create a new one
+        if (!channel) {
+          const handle = await createUniqueHandle(profile.emails[0].value.split("@")[0]);
+          channel = await Channel.create({
+            name: profile.displayName,
+            handle: handle,
+            email: profile.emails[0].value,
+            logoURL: profile.photos[0].value.split("=")[0],
+          });
         }
-    )
-)
 
-// Serialize the user to decide which data of the user object should be stored in the session
-passport.serializeUser((channel, done) => {
-    done(null, channel.id) // Store the channel id in the session
-})
-
-// Deserialize the user from the session
-passport.deserializeUser(async (id, done) => {
-    try {
-        // Find the channel by ID
-        const channel = await Channel.findById(id)
-        done(null, channel) // Return the channel
-    } catch (error) {
-        done(error) // Handle errors
+        // Return the channel through the callback
+        cb(null, channel);
+      } catch (err) {
+        cb(err);
+      }
     }
-})
+  )
+);
 
-module.exports = passport // Export the configured passport
+// Serialize the user (store channel id in session)
+passport.serializeUser((channel, done) => {
+  done(null, channel.id);
+});
+
+// Deserialize the user (retrieve channel from DB)
+passport.deserializeUser(async (id, done) => {
+  try {
+    const channel = await Channel.findById(id);
+    done(null, channel);
+  } catch (error) {
+    done(error);
+  }
+});
+
+module.exports = passport;
