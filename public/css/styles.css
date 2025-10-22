@@ -76,6 +76,7 @@ main {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
 
 input:-webkit-autofill,
@@ -222,4 +223,64 @@ input:-webkit-autofill:active {
     flex: none;
     font-weight: 500;
     color: var(--accent);
+}
+
+/* ===== GLOBAL RESPONSIVE STYLES ===== */
+
+/* Prevent horizontal scrolling on all devices */
+body, html {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Better scrolling on mobile */
+@media (max-width: 767px) {
+    .scrollable {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .scrollable::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    /* Ensure all text is readable on mobile */
+    body {
+        font-size: 14px;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    /* Better touch targets */
+    a, button, .btn, svg {
+        min-height: 36px;
+        min-width: 36px;
+    }
+
+    /* Improve form inputs on mobile */
+    input, textarea, select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        -webkit-appearance: none;
+        appearance: none;
+    }
+}
+
+/* Extra small mobile devices */
+@media (max-width: 480px) {
+    body {
+        font-size: 13px;
+    }
+
+    .scrollable::-webkit-scrollbar {
+        width: 3px;
+    }
+}
+
+/* Landscape orientation improvements */
+@media (max-height: 500px) and (orientation: landscape) {
+    nav {
+        height: 48px;
+    }
+
+    main .main-body {
+        height: calc(100% - 48px);
+    }
 }

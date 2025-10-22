@@ -400,3 +400,276 @@ nav .mid .search .btn {
     border-bottom-right-radius: 50px;
     width: 70px;
 }
+
+/* ===== RESPONSIVE DESIGN - MOBILE & TABLET ===== */
+
+/* Tablet - Medium screens (768px - 1024px) */
+@media (max-width: 1024px) {
+    nav {
+        padding: 0 8px;
+    }
+
+    nav .left .logo-box {
+        width: 80px;
+        padding: 18px 10px;
+    }
+
+    nav .mid .search {
+        margin: 0 0 0 20px;
+    }
+
+    nav .right {
+        min-width: 180px;
+    }
+
+    nav .right .menu {
+        right: 8px;
+        width: 280px;
+    }
+}
+
+/* Mobile - Small to medium screens (481px - 767px) */
+@media (max-width: 767px) {
+    nav {
+        padding: 0 4px;
+        height: 56px;
+    }
+
+    nav .left .logo-box {
+        width: 70px;
+        padding: 18px 8px 18px 12px;
+    }
+
+    nav .country-code {
+        display: none;
+    }
+
+    nav .mid {
+        flex: 1;
+        min-width: 0;
+    }
+
+    nav .mid .search {
+        margin: 0 0 0 8px;
+        flex: 1;
+    }
+
+    nav .mid .search input {
+        font-size: 14px;
+        padding: 0 10px;
+    }
+
+    nav .mid .search .btn {
+        width: 50px;
+    }
+
+    nav .mid .voice {
+        display: none;
+    }
+
+    nav .right {
+        min-width: auto;
+        gap: 4px;
+    }
+
+    nav .right .child {
+        width: 36px;
+        height: 36px;
+        padding: 6px;
+    }
+
+    nav .right .child svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    nav .right .create {
+        display: none;
+    }
+
+    nav .signin {
+        padding: 0 8px;
+        font-size: 12px;
+        line-height: 28px;
+        border-radius: 16px;
+    }
+
+    nav .signin svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    nav .profile-pic {
+        width: 28px;
+        height: 28px;
+    }
+
+    nav .right .menu {
+        right: 4px;
+        width: calc(100vw - 8px);
+        max-width: 320px;
+    }
+
+    nav .right .menu .top {
+        padding: 12px;
+    }
+
+    nav .right .menu .top .details {
+        margin-left: 10px;
+        font-size: 13px;
+    }
+
+    nav .right .menu .menu-section {
+        padding: 10px 0;
+    }
+
+    nav .right .menu .menu-section .btn {
+        font-size: 13px;
+        padding: 8px 0;
+    }
+
+    nav .right .menu .menu-section .btn svg {
+        padding: 0 12px;
+    }
+}
+
+/* Mobile - Extra small screens (320px - 480px) */
+@media (max-width: 480px) {
+    nav .left .menu-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    nav .left .menu-btn svg {
+        height: 20px;
+        width: 20px;
+    }
+
+    nav .left .logo-box {
+        width: 60px;
+        padding: 18px 6px 18px 8px;
+    }
+
+    nav .mid .search input {
+        font-size: 13px;
+        padding: 0 8px;
+    }
+
+    nav .mid .search .btn {
+        width: 44px;
+    }
+
+    nav .signin {
+        font-size: 11px;
+        padding: 0 6px;
+    }
+
+    nav .signin span {
+        margin-left: 3px;
+    }
+}
+
+/* Side Navigation Responsive */
+@media (max-width: 1024px) {
+    .sidenav {
+        width: 220px;
+        left: -220px;
+    }
+
+    .sidenav .btn span,
+    .sidenav .title span {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .sidenav {
+        width: 240px;
+        left: -240px;
+    }
+
+    .sidenav .left {
+        padding: 8px 0;
+    }
+
+    .sidenav .section {
+        margin-top: 0;
+    }
+
+    .sidenav .btn {
+        padding: 12px 0;
+    }
+
+    .sidenav .btn span {
+        font-size: 14px;
+        margin-left: 20px;
+    }
+
+    .sidenav .btn svg {
+        margin-left: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidenav {
+        width: 80vw;
+        max-width: 280px;
+        left: calc(-80vw);
+    }
+}
+
+/* Mini sidenav responsive */
+@media (max-width: 1024px) {
+    sidenav {
+        width: 60px;
+    }
+
+    sidenav .btn {
+        width: 56px;
+        padding: 12px 0 10px;
+        font-size: 9px;
+    }
+
+    sidenav .btn svg {
+        width: 20px;
+        height: 20px;
+        margin-bottom: 4px;
+    }
+}
+
+@media (max-width: 767px) {
+    sidenav {
+        display: none;
+    }
+}
+
+/* Ensure popup menus are responsive */
+@media (max-width: 480px) {
+    #___loginPopup {
+        width: calc(100vw - 40px);
+        max-width: 340px;
+        height: auto;
+        min-height: 150px;
+    }
+
+    #___loginPopup .title {
+        font-size: 15px;
+        line-height: 20px;
+        padding: 0 20px;
+        margin-top: 20px;
+        margin-bottom: 12px;
+    }
+
+    #___loginPopup .message {
+        font-size: 13px;
+        line-height: 18px;
+        padding: 0 20px;
+        margin-bottom: 24px;
+    }
+
+    #___loginPopup a {
+        padding: 8px 8px 8px 20px;
+        height: 36px;
+        font-size: 13px;
+    }
+}

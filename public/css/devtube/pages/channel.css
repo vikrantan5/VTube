@@ -206,3 +206,127 @@ main .main-body {
 .main-body .info .subscription.is-subscribed .subscribe {
     display: none;
 }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .main-body .main section {
+        padding: 0 8% 0 6%;
+    }
+
+    .main-body .main section.info .row img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .main-body .main section.info .row .column .name {
+        font-size: 28px;
+    }
+
+    .main-body .main section.info .row .column .information,
+    .main-body .main section.info .row .column .more {
+        font-size: 13px;
+    }
+}
+
+/* Mobile - Large (481px - 767px) */
+@media (max-width: 767px) {
+    .main-body .main section {
+        padding: 0 16px;
+    }
+
+    .banner-container {
+        border-radius: 0;
+    }
+
+    .main-body .main section.info {
+        padding-top: 12px;
+    }
+
+    .main-body .main section.info .row {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .main-body .main section.info .row img {
+        height: 100px;
+        width: 100px;
+        margin-bottom: 12px;
+    }
+
+    .main-body .main section.info .row .column {
+        align-items: center;
+        padding: 0;
+        width: 100%;
+    }
+
+    .main-body .main section.info .row .column .name {
+        font-size: 24px;
+        margin-bottom: 4px;
+    }
+
+    .main-body .main section.info .row .column .information,
+    .main-body .main section.info .row .column .more {
+        font-size: 12px;
+    }
+
+    .main-body .main section.info .row .column .row.btns {
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .main-body .main section.info .row .column .row.btns a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        margin-right: 0;
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .main-body .info .subscribe.btn,
+    .main-body .info .subscribed .btn {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    .main-body .info .subscription {
+        margin-top: 12px;
+    }
+}
+
+/* Mobile - Small (320px - 480px) */
+@media (max-width: 480px) {
+    .main-body .main section {
+        padding: 0 12px;
+    }
+
+    .main-body .main section.info .row img {
+        height: 80px;
+        width: 80px;
+    }
+
+    .main-body .main section.info .row .column .name {
+        font-size: 20px;
+    }
+
+    .main-body .main section.info .row .column .information,
+    .main-body .main section.info .row .column .more {
+        font-size: 11px;
+    }
+
+    .main-body .main section.info .row .column .row.btns a {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+
+    .main-body .info .subscribe.btn,
+    .main-body .info .subscribed .btn {
+        font-size: 12px;
+        padding: 7px 10px;
+    }
+}

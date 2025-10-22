@@ -331,4 +331,148 @@ button {
     border-radius: 100cm;
 }
 
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .container .create-channel-form {
+        width: 90vw;
+        max-width: 600px;
+    }
+
+    .container .create-channel-form .desc,
+    .container .create-channel-form .input-fields,
+    .container .create-channel-form .disclaimer {
+        padding-left: 80px;
+        padding-right: 80px;
+    }
+}
+
+/* Mobile - Large (481px - 767px) */
+@media (max-width: 767px) {
+    .container .create-channel-form {
+        width: 95vw;
+        max-width: 500px;
+        height: auto;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .container .create-channel-form .header h1 {
+        font-size: 20px;
+        line-height: 28px;
+        margin-left: 16px;
+    }
+
+    .container .create-channel-form .desc,
+    .container .create-channel-form .input-fields,
+    .container .create-channel-form .disclaimer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .container .create-channel-form .image .imagePreview {
+        width: 100px;
+        height: 100px;
+    }
+
+    .container .create-channel-form .input-fields .text-input {
+        font-size: 14px;
+    }
+
+    .container .create-channel-form .input-fields .text-input input {
+        font-size: 14px;
+    }
+
+    .container .create-channel-form .input-fields .text-input input:placeholder-shown+label {
+        font-size: 14px;
+    }
+
+    .container .create-channel-form .footer {
+        position: relative;
+        margin-top: 12px;
+    }
+}
+
+/* Mobile - Small (320px - 480px) */
+@media (max-width: 480px) {
+    .container .create-channel-form {
+        width: 100vw;
+        height: 100vh;
+        max-height: 100vh;
+        border-radius: 0;
+    }
+
+    .container .create-channel-form .header {
+        height: 56px;
+    }
+
+    .container .create-channel-form .header h1 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-left: 12px;
+    }
+
+    .container .create-channel-form .desc,
+    .container .create-channel-form .input-fields,
+    .container .create-channel-form .disclaimer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .container .create-channel-form .desc {
+        padding-top: 20px;
+    }
+
+    .container .create-channel-form .image {
+        margin-top: 24px;
+    }
+
+    .container .create-channel-form .image .imagePreview {
+        width: 90px;
+        height: 90px;
+    }
+
+    .container .create-channel-form .picture {
+        margin: 12px 0;
+    }
+
+    .container .create-channel-form .input-fields {
+        margin-bottom: 20px;
+    }
+
+    .container .create-channel-form .input-fields .text-input {
+        height: 44px;
+        font-size: 13px;
+    }
+
+    .container .create-channel-form .input-fields .text-input input {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .container .create-channel-form .input-fields .text-input input:placeholder-shown+label {
+        font-size: 13px;
+    }
+
+    .container .create-channel-form .input-fields .text-input label {
+        font-size: 11px;
+    }
+
+    .container .create-channel-form .disclaimer {
+        font-size: 9px;
+    }
+
+    .container .create-channel-form .footer {
+        height: 48px;
+    }
+
+    .container .create-channel-form .footer * {
+        font-size: 13px;
+        padding: 0 12px;
+        height: 32px;
+        line-height: 32px;
+    }
+}
+
 
