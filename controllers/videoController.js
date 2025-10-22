@@ -249,6 +249,7 @@ const getStudioVideos = async (req, res) => {
       channel: req.channel._id,
       page: req.query?.page || 1,
       limit: req.query?.limit || 10,
+      includeDrafts: true
     })
     res.status(200).json(videos)
   } catch (error) {
@@ -264,7 +265,8 @@ const getStudioShorts = async (req, res) => {
       channel: req.channel._id,
       page: req.query?.page || 1,
       limit: req.query?.limit || 10,
-      isShort: true
+      isShort: true,
+      includeDrafts: true
     })
     res.status(200).json(shorts)
   } catch (error) {
@@ -379,7 +381,8 @@ const getPublicVideos = async (req, res) => {
       limit: req.query?.limit || 10,
       channel: req.query?.channel,
       tag: req.query?.tag,
-      searchText: req.query?.search
+      searchText: req.query?.search,
+      isShort: false  // Only get regular videos, not shorts
 
     })
     res.status(200).json(videos)
@@ -427,7 +430,8 @@ const getVideos = async (criteria) => {
     tag,
     searchText,
     uid,
-    notUid
+    notUid,
+    includeDrafts = false
   } = criteria
 
   limit = parseInt(limit)
@@ -440,7 +444,13 @@ const getVideos = async (criteria) => {
 
   if (lengthLessThan !== undefined) query.length = { ...query.length, $lt: lengthLessThan }
 
-  if (privacySettings) query.privacySettings = privacySettings
+  if (privacySettings) {
+    query.privacySettings = privacySettings
+    // For public videos, exclude drafts by default unless includeDrafts is true
+    if (privacySettings === 'public' && !includeDrafts) {
+      query.isDraft = false
+    }
+  }
 
   if (title) query.title = { $regex: title, $options: 'i' }  // case-insensitive regex search
   if (description) query.description = { $regex: description, $options: 'i' }  // case-insensitive regex search
